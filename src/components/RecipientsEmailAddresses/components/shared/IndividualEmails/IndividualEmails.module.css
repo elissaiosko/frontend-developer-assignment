@@ -1,0 +1,18 @@
+.titleContainer {
+    display: flex;
+    align-items: center;
+
+}
+
+.title {
+    margin-left: 10px;
+}
+
+.caretIcon {
+    position: relative;
+    top: 1.5px;
+}
+
+.container {
+    margin-left: 20px;
+}

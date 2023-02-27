@@ -1,8 +1,10 @@
 # Timescale Frontend Programming Assignment
 
-Thank you for taking the time to apply for a frontend position at Timescale!
-We hope you'll enjoy this small coding assignment that was designed to illustrate your coding skills. It should take around
-3 hours to complete at a time of your choosing. If you have any questions, feel free to reach out to us and we'll be happy
+Thank you for taking the time to apply for a front end position at Timescale!
+Because we get hundreds of applicants for the front end positions, we are asking
+applicants to build a small React component. This exercise should take around
+3 hours to complete at a time of your choosing and should follow the instructions
+below. If you have any questions, feel free to reach out to us and we'll be happy
 to help. Happy hacking!
 
 ## Assignment
@@ -26,8 +28,10 @@ As a user, I can
 ### The rules
 
 - The component should have a simple and clean design
-- You can use a component library of your choice (we use Chakra UI) 
+- The component should be written in TypeScript
 - The component should work in the latest Chrome on Mac OS
-- We don't expect a full test coverage, but a couple of unit tests would be nice to have
+- We don't expect a full test coverage, a couple of unit tests would be nice to have
 - Fork the repo to your own account, make it public and send us the repo url when you are completed. We will
   clone and run the site on our local.
+
+

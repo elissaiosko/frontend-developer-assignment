@@ -1,0 +1,49 @@
+.input {
+    border: none;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 14px;
+    width: calc(100% - 60px);
+}
+
+
+
+.input:focus {
+    border: none
+}
+
+.container {
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 5px;
+    height: 30px;
+    padding: 3px 0px;
+    margin-bottom: 30px;
+    position: relative;
+    width: 270px;
+
+}
+
+.searchIcon {
+    padding-left: 8px;
+    font-size: 15px;
+}
+
+.searchIcon:hover {
+    cursor: pointer;
+}
+
+.clearIcon {
+    padding-right: 10px;
+}
+
+.clearIcon:hover {
+    cursor: pointer;
+}
+
+.iconsContainer {
+    display: flex;
+    position: absolute;
+    right: 0;
+}

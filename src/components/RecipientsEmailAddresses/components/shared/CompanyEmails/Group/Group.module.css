@@ -1,0 +1,41 @@
+.container {
+    margin-bottom: 20px;
+}
+
+.titleContainer {
+    display: flex;
+    align-items: center;
+
+}
+
+.title {
+    margin-left: 10px;
+}
+
+.title:hover{
+    cursor: pointer;
+}
+
+.caretIcon {
+    position: relative;
+    top: 1.5px;
+}
+
+.caretIcon:hover{
+    cursor: pointer;
+}
+
+.addRemoveIcon {
+    margin-left: 10px;
+    position: relative;
+    top: 2px;
+}
+
+addRemoveIcon:hover {
+    cursor: pointer;
+}
+
+.emailItemContainer {
+    margin-left: 40px;
+}
+

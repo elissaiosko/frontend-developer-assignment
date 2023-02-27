@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.addRemoveIcon {
+    margin-left: 7px;
+    position: relative;
+    top: 1.5px;
+    /*width: 10px;*/
+    font-size: 15px;
+}
+
+.addRemoveIcon:hover {
+    cursor: pointer;
+}
+
