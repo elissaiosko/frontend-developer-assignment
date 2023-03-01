@@ -43,7 +43,7 @@ const EmailSection = ({
           <Component
             emails={emails}
             isForSelectedEmails
-            onToggleSelect={onToggleSelect}
+            onToggleSelect={onToggleSelect }
             onToggleSelectGroup={onToggleSelectGroup}
           />
         </div>

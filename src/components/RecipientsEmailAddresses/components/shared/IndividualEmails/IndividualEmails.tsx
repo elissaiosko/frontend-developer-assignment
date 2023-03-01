@@ -11,6 +11,7 @@ type Props = {
   emails: EmailAddressesGrouped;
   onToggleSelect: (name: string) => void;
   isForSelectedEmails: boolean;
+  onToggleSelectGroup?: (name: string) => void;
 };
 
 const IndividualEmails = ({
