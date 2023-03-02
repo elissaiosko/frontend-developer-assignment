@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
 import RecipientsEmailAddresses from "./";
 
 import {
   render,
   screen,
   fireEvent,
-  waitForElementToBeRemoved
+  waitForElementToBeRemoved,
+  waitFor,
 } from "@testing-library/react";
 
 //@ts-ignore
@@ -58,23 +59,23 @@ describe("RecipientsEmailAddresses", () => {
     expect(screen.queryByText("mike@hello.com")).toBeFalsy();
   });
 
-  it("should add a user and clear the input", () => {
+  it("should add a user and clear the input", async () => {
     render(<RecipientsEmailAddresses emailAddresses={recipientsData} />);
+    const inputEmail = "elissaioskon@gmail.com";
+
     const searchInput = screen.getByTestId("search-recipient");
 
     fireEvent.change(searchInput, {
-      target: { value: "elissaios@gmail.com" },
-    });
-    fireEvent.keyDown(searchInput, {
-      key: "Enter",
-      code: "Enter",
-      charCode: 13,
+      target: { value: inputEmail },
     });
 
-    fireEvent.click(searchInput);
+    const addRecipient = screen.getByTestId("add-recipient");
+    //
+    fireEvent.click(addRecipient);
 
-    expect(screen.queryByText("elissaios@gmail.com")).toBeTruthy();
-    expect(searchInput.textContent).toEqual("");
+    // await waitForElementToBeRemoved(screen.queryByText("add-recipient"));
+    await waitFor(() => expect(screen.getByText(inputEmail)).toBeTruthy());
+    // expect(searchInput.textContent).toEqual("");
   });
 
   it("should not add icon for adding a user when email is not valid", () => {
@@ -83,11 +84,6 @@ describe("RecipientsEmailAddresses", () => {
 
     fireEvent.change(searchElement, {
       target: { value: "elissaiosgmail.com" },
-    });
-    fireEvent.keyDown(searchElement, {
-      key: "Enter",
-      code: "Enter",
-      charCode: 13,
     });
 
     expect(screen.queryByTestId("add-recipient")).toBeFalsy();

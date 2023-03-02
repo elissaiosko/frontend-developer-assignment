@@ -14,19 +14,21 @@ type Props = {
   onChange: (value: string) => void;
   onClear: () => void;
   onAdd: () => void;
+  onApply: (value: string) => void;
   shouldDisplayAdd: boolean;
 };
 
 const Search = ({
-  value,
   onClear,
-  onChange,
   onAdd,
+  onApply,
   shouldDisplayAdd,
+  value,
+  onChange,
 }: Props) => {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter" && shouldDisplayAdd) {
-      onAdd();
+    if (event.key === "Enter") {
+      onApply(value);
     }
   };
 
@@ -35,7 +37,7 @@ const Search = ({
       <FontAwesomeIcon
         icon={faMagnifyingGlass}
         className={classes.searchIcon}
-        onClick={() => onChange(value)}
+        onClick={() => onApply(value)}
       />
 
       <input
@@ -46,17 +48,17 @@ const Search = ({
         autoFocus
         placeholder={"Search"}
         onKeyDown={handleKeyDown}
-        data-testId="search-recipient"
+        data-testid="search-recipient"
       />
 
       <div className={classes.iconsContainer}>
         {shouldDisplayAdd && (
-          <span data-testId="add-recipient" onClick={onAdd}>
+          <span data-testid="add-recipient" onClick={onAdd}>
             <FontAwesomeIcon icon={faAdd} className={classes.clearIcon} />
           </span>
         )}
 
-        <span data-testId="x-search-recipient" onClick={onClear}>
+        <span data-testid="x-search-recipient" onClick={onClear}>
           <FontAwesomeIcon icon={faXmark} className={classes.clearIcon} />
         </span>
       </div>

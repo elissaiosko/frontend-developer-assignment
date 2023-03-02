@@ -30,13 +30,13 @@ const GroupTreeItem = ({
 }: Props) => {
   return (
     <div className={cx(classes.titleContainer, className)}>
-      <span data-testId="group-icon" onClick={isOpen ? onClose : onOpen}>
+      `{" "}
+      <span data-testid="group-icon" onClick={isOpen ? onClose : onOpen}>
         <FontAwesomeIcon
           icon={isOpen ? faCaretDown : faCaretRight}
           className={classes.caretIcon}
         />
       </span>
-
       <div className={classes.treeItemContainer}>
         <TreeItem
           label={label}

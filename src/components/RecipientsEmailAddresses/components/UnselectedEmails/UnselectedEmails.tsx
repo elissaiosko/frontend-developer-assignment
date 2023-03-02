@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { validate } from "email-validator";
 
 import Search from "./Search";
@@ -21,33 +21,58 @@ const UnselectedEmails = ({
   onToggleSelectGroup,
   onAddEmail,
 }: Props) => {
+  const [appliedSearchText, setAppliedSearchText] = useState("");
   const [searchText, setSearchText] = useState("");
-  const clearEmailAddress = () => setSearchText("");
 
   const filteredEmailAddresses = emailAddresses.filter((emailAddress) => {
-    const isInSearchResults = emailAddress.email.search(searchText) !== -1;
+    const isInSearchResults =
+      emailAddress.email.search(appliedSearchText) !== -1;
 
     return isInSearchResults ? true : false;
   });
 
-  const emailAlreadyExists = emailAddresses.some(
-    ({ email }) => email === searchText
+  const clearSearch = () => {
+    setAppliedSearchText("");
+    setSearchText("");
+  };
+
+  const getEmailIsValid = () => {
+    const emailAlreadyExists = emailAddresses.some(
+      ({ email }) => email === searchText
+    );
+    const emailIsValid = !emailAlreadyExists && validate(searchText);
+    return emailIsValid;
+  };
+
+  const handleAddEmail = () => {
+    onAddEmail(searchText);
+    clearSearch();
+  };
+
+  const handleApplySearch = () => {
+    setAppliedSearchText(searchText);
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchText(value);
+  };
+
+  const emailIsValid = useMemo(
+    () => getEmailIsValid(),
+    [emailAddresses, searchText]
   );
-  const emailIsValid = !emailAlreadyExists && validate(searchText);
 
   return (
     <div className={classes.container}>
       <div className={classes.title}>Available Recipients</div>
 
       <Search
-        onChange={(value) => setSearchText(value)}
-        onClear={clearEmailAddress}
         value={searchText}
-        onAdd={() => {
-          onAddEmail(searchText);
-          clearEmailAddress();
-        }}
+        onApply={handleApplySearch}
+        onChange={handleSearchChange}
+        onClear={clearSearch}
         shouldDisplayAdd={emailIsValid}
+        onAdd={handleAddEmail}
       />
 
       <EmailList
